@@ -16,19 +16,25 @@ int main(int argc, char const *argv[]) {
 
     //variable declaration
     double hours; 
+    double overtimeHours
     double rate;
-    double wages;
-
+    double normalWages;
+    double overtimeWages;
+    double totalWages;
+    
     cout << fixed;  //default is scientific
     cout << setprecision(2);
     //input
     cout << "Enter the hours: ";
     cin >> hours;
-    if (hours < 0 || hours > 40)
+    if (hours < 0 || hours > 80)
     {
-        cout << "Error: hours must be between 0 and 40 hours" << endl;
+        cout << "Error: hours must be between 0 and 80 hours" << endl;
         exit(0);
     }
+    if (hours < 40) {
+        overtimeHours = hours - 40;
+            }
     
     cout << "Hours: " << hours << endl;
     cout << "Enter the rate: ";
@@ -41,8 +47,10 @@ int main(int argc, char const *argv[]) {
     
     cout << "Rate: $" << rate << " per hour" << endl;
     //calculations
-    wages = rate * hours;
+    normalWages = rate * hours;
+    overtimeWages = (rate * 1.5) * overtimeHours;
+    totalWages = normalWages + overtimeWages;
     //output
-    cout << "Wages: $" << wages << endl;
+    cout << "Wages: $" << totalWages << endl;
     return 0;
 } /// main
